@@ -1,2 +1,3 @@
-#Portfolio
-kodygentry.com - coming soon
+# Portfolio
+### kodygentry.com - coming soon
+Built with Django
