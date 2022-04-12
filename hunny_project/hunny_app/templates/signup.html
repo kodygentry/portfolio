@@ -1,0 +1,144 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- 
+    hex pallete for later - dont delete
+    FFA05C
+    F08242
+    FBC688
+    515B67
+    383843
+ -->
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'hunny_app/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'hunny_app/css/style.css' %}">
+    <style>
+        .container{
+            background-color: white;
+        }
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: transparent;
+        }
+
+        li {
+          float: left;
+        }
+
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        li a:hover {
+          background-color: #EDD7BD;
+        }
+
+        .img{
+            width: 80%;
+            border-radius: 8%;
+        }
+
+</style>
+</head>
+<body style="background: linear-gradient(44deg, #ff9e2d, #ffcece, #f78131);background-size: 2000% 2000%;";>
+    <!-- need to implement this nav bar into base.html for use -->
+    <!-- this nav bar is identical to initial.html nav bar but css not working ????? -->
+    <div class="col-9  text-right">
+        <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+            <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+                <ul class="site-menu main-menu js-clone-nav ml-auto" style="border-radius: 20px;">
+                  <li class="active"><a href="/landing" class="nav-link">HUNNY</a></li>
+                  <li><a href="/login" class="nav-link">Sign in</a></li>
+                  <li><a href="/about" class="nav-link">About</a></li>
+                  <li><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+    </div>
+
+    <div class="main" style="background-color:transparent";>
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" class="register-form" id="register-form" action="">
+                           {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <!-- <input type="text" name="name" id="name" placeholder="Your Name"/> -->
+                                {{form.username}}
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <!-- <input type="email" name="email" id="email" placeholder="Your Email"/> -->
+                                {{form.email}}
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <!-- <input type="password" name="pass" id="pass" placeholder="Password"/> -->
+                                {{form.password1}}
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <!-- <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/> -->
+                                {{form.password2}}
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" name="Create User"/>
+                            </div>
+                            <!-- <input type="submit" name="Create User"> -->
+                        </form>
+                        {{form.errors}}
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="{% static 'hunny_app/images/signup-image.jpg' %}" class="img" alt="sing up image"></figure>
+                        <a href="/login" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- JS -->
+    <script src="{% static 'datingapp/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'datingapp/js/main.js' %}"></script>
+    <script>
+        /* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+//We start indexing at one because CSRF_token is considered and input field 
+*/
+
+//Query All input fields
+var form_fields = document.getElementsByTagName('input')
+form_fields[1].placeholder='Full name';
+form_fields[2].placeholder='Email';
+form_fields[3].placeholder='Enter password...';
+form_fields[4].placeholder='Re-enter Password...';
+
+
+for (var field in form_fields){	
+form_fields[field].className += ' form-control'
+}
+</script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

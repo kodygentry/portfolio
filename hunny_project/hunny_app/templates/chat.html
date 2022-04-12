@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Chat Rooms</title>
+</head>
+<style>
+    body {
+        background-color: #ffe6cc;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    form.example{
+        padding-bottom: 10px;
+    }
+
+    form.example input[type=text] {
+        border-radius: 12px;
+        padding: 10px;
+        font-size: 13px;
+        border: 1px solid rgb(255, 255, 255);
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+
+    form.example button {
+        border-bottom-right-radius: 12px;
+        border-top-right-radius: 12px;
+        float: left;
+        left: 0;
+        width: 20%;
+        padding: 10px;
+        background: rgba(241, 147, 85, 0.664);
+        color: white;
+        font-size: 17px;
+        border: 1px solid rgb(255, 255, 255);
+        border-left: none;
+        cursor: pointer;
+    }
+
+    form.example button:hover {
+        background: #0b7dda;
+    }
+
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .container{
+        margin-top: 40px;
+        display: table;
+        background-color: rgba(241, 147, 85, 0.5);
+        border: 3px solid rgb(255, 255, 255);
+    }
+
+    .centered{
+        padding-bottom: 60px;
+        display: table-cell;
+            width: 800px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .match-list{
+        display: table-cell;
+            width: 900px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .btn-group button {
+        border-radius: 12px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left:auto;
+        margin-right:auto;
+        max-width:400px;
+        height: 70px;
+        background: rgba(241, 147, 85, 0.664);/* Green background */
+        border: 2px solid white;
+        color: white; /* White text */
+        padding: 0px 24px; /* Some padding */
+        padding-bottom: 10px;
+        cursor: pointer; /* Pointer/hand icon */
+        width: 50%; /* Set a width if needed */
+        display: block; /* Make the buttons appear below each other */
+    }
+
+    #room-name-submit{
+        height: 42px;
+    }
+
+    #room-name-input{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .btn-group button:not(:last-child) {
+        border-bottom: none; /* Prevent double borders */
+    }
+
+    /* Add a background color on hover */
+    .btn-group button:hover {
+        background-color: rgb(245, 160, 160);
+    }
+
+    .list{
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        font-size: 10px;
+        padding-left:6px;
+        padding-top:0px;
+    }
+
+    #close-image img {
+        vertical-align: left;
+        height: 50px;  
+        width: 50px;
+    }
+
+    
+    .user-det small{
+        padding: 0px;
+        align-items: right;
+        font-size: 10px;
+    }
+
+    .user-att large{
+        top: 10;
+        font-weight:bolder;
+        font-size: 20px;
+    }
+
+    .bck {
+        background: linear-gradient(44deg, #ff9e2d, #ffcece, #f78131);
+        background-size: 2000% 2000%;
+    }
+
+</style>
+<body class="bck">
+    <div class="container">
+        <div class="centered"><h1 style="color: rgb(255, 255, 255); font-size: 50px;">Matches</h1><br>
+
+            <!-- search bar -->
+            <form class="example" action="/chata" style="margin:auto;max-width:400px">
+                <input id="room-name-input" type="text" placeholder="Search . . .">
+                <button id="room-name-submit" type="submit" style="font-size: 28px; margin-bottom: 10px; padding-top: 3px;">⌕</button>
+            </form>
+            <!-- loop match list -->
+            <div class="btn-group">
+                <div class="match-list">
+                    {% for match in matches %}
+                    <button id="close-image">
+                        <a class="list" href='room'>
+                            <div class="user-att">
+                                <large>{{ match.userprofile.first_name }} {{ match.userprofile.last_name }}</large>
+                            </div>
+                        </a>
+                    </button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click(); 
+            }
+        };
+        //
+        // for now, the input can not have a space, use username to create new room????
+        //
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+</body>
+</html>
+{% endblock content %}

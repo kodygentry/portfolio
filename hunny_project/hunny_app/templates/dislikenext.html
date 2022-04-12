@@ -1,0 +1,204 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
+  <link href="./assets/favicon.ico" rel="icon"> -->
+
+  <title>Hunny</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/7cf11bd0ef.js" crossorigin="anonymous"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
+  <link href="./assets/favicon.ico" rel="icon">
+  <!-- <link href="{% static 'hunny_app/css/matchingroom.css' %}" rel="stylesheet"> -->
+  <style>
+    .redHeart {
+      color: rgb(204, 119, 62);
+      font-size: 80px;
+      padding-right: 50px;
+    }
+
+    .blackHeart {
+      color: #7f5f99;
+      font-size: 80px;
+    }
+
+    .redHeart:hover{
+      color:red;
+      transform: rotate(45deg) scale(1.2);
+      opacity: 0.7;
+    }
+
+    .blackHeart:hover{
+      color:#48196e;
+      transform: rotate(-45deg) scale(1.2);
+      opacity: 0.7;
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+    }
+    button {
+      padding-top: 20px;
+      margin-top: 40px;
+      border: none;
+      background: none;
+    }
+    .page{
+      width: 1500px;
+      height: 400px;
+      background: #FFFFFF;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 30px;
+      border-radius: 20px;
+    }
+    body{
+      background: linear-gradient(44deg, #ff9e2d, #ffcece, #f78131);
+      background-size: 2000% 2000%;
+    }
+    .profile_pic {
+      margin-top: 50px;
+      filter: blur(8px);
+      border: 5px solid white;
+      transition: transform .2s;
+    }
+
+
+    .profile_pic:hover {
+      transform: scale(1.2);
+    }
+
+    .container{
+        margin-top: 40px;
+        display: table;
+        background-color: rgba(241, 147, 85, 0.5);
+        border: 3px solid rgb(255, 255, 255);
+
+    }
+
+    .centered{
+        padding-bottom: 60px;
+        display: table-cell;
+            width: 800px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .username{
+      margin: auto;
+      color: rgb(255, 255, 255); 
+      font-size: 50px;
+      padding-bottom: -20px;
+    }
+
+    .moreinfo{
+      margin-left: 40px;
+      margin-right: 40px;
+      text-align: center;
+      font-size: large;
+      overflow-wrap: break-word;
+    }
+
+    .swal-overlay {
+      background-color: rgba(241, 147, 85, 0.5);
+      border: 3px solid white;
+    }
+
+    .swal-title {
+      margin: 0px;
+      font-size: 25px;
+      margin-bottom: 28px;
+    }
+
+    .swal-text {
+      padding: 17px;
+      display: block;
+      margin: 22px;
+      text-align: center;
+      color: #61534e;
+    }
+
+    .swal-button {
+      padding: 7px 19px;
+      border-radius: 2px;
+      background-color: rgb(241, 147, 85);
+      font-size: 12px;
+      border: 1px solid #3e549a;
+      text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+    }
+
+  </style>
+</head>
+<body class></body>
+  <div class="container">
+    <div class="centered">
+      <img class="profile_pic" src="{{ next.userprofile.image0.url }}">
+      <div>
+        <h1 class="username">{{next.userprofile.first_name}} {{next.userprofile.last_name}}</h1>
+        <section>
+          <p class="moreinfo" style="color: white; font-size: 15px;">{{next.userprofile.age}} ◈ {{next.userprofile.gender}} ◈ {{next.userprofile.city}}</p>
+          <p class="moreinfo" style="color: white; font-size: 15px;">Looking for: {{next.userprofile.relationship_preference}}</p>
+          <p class="moreinfo" style="color: white; font-size: 20px;">{{next.userprofile.bio}}</p>
+        </section>
+      </div>
+      <form method = POST action="{% url 'hunny-like' %}" style = "display:inline">
+        {% csrf_token %}
+        <button class="button" href="/profile" type="submit" id="pic"><i class="fas redHeart fa-heart"></i></button>
+      </form>
+      <form method = POST action="{% url 'hunny-dislike' %}" style = "display:inline">
+        {% csrf_token %}
+        <button class="button" href="/matchingroom" type="submit" id="pic"><i class="fas blackHeart fa-heart-broken"></i></button>
+      </form?>
+      <p style="text-align: right; color: white; padding-right: 30px; padding-bottom: 0px; margin-top: 20px;">@{{next.username}}</p>
+    </div>
+  </div>
+</body>
+
+
+<script>
+var intDuration = 2000; //time in ms
+setInterval(
+   function(){
+       $('#pic').animate({"width": "-=10px"},'slow').delay(1000)
+           .animate({"width": "+=10px"},'slow');
+   }, 
+   intDuration
+);
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+     scrollRevelation('.card');
+  });
+</script>
+
+<script type="text/javascript" src="{% static 'hunny_app/js/matching.js' %}" ></script></body>
+{% if match %}
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script> 
+    usermatch = "{{next.first_name}}";
+    console.log("test " + usermatch);
+    swal("You've got a match!", "Go message them in Chat Room!", "success"); 
+  </script>
+{% endif %}
+
+</html>
+{% endblock content %}
+
+

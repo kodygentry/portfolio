@@ -1,0 +1,298 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA_Compatible" content="ie=edge">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+        <link rel="stylesheet" href="{% static 'hunny_app/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'hunny_app/css/style.css' %}">
+        <style>
+            body{
+                margin: 0px;
+                padding: 0px;
+                
+            }
+            .site-navigation{
+                display: inline-block;
+                position: relative;
+                justify-content: space-between;
+                align-items: center;
+                background-color: transparent;
+                color: white;
+                font-size: 1rem;
+            }
+            .col-9{
+                text-align: center;
+            }
+            .brand-title{
+                color: transparent;
+            }
+            .navbar-links{
+                height: 100%;
+            }
+            .navbar-links ul {
+                margin: 0 ;
+                padding: 0 ;
+                display: flex;
+            }
+
+            .navbar-links li {
+                list-style: none;     
+            }
+
+            .navbar-links li a {
+                display: block ;
+                color: white ;
+                padding: 1rem ;
+                text-decoration: none ;
+            }
+
+            .navbar-links li:hover {
+                background-color: #EDD7BD ;
+                color: white ;
+                border-radius: 10px;
+            }
+
+            .toggle-button{
+                position: absolute;
+                top: .75rem;
+                right: 1rem;
+                display: none;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 21px;
+            }
+
+            .toggle-button .bar{
+                height: 3px;
+                width: 100%;
+                background-color: white;
+                border-radius: 10px;
+            }
+            .right-side {
+                float: right !important;
+            }
+
+            footer {
+                clear: both;
+                position: relative;
+                margin-top: 500px;
+            }
+            #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+            }
+
+            #myBtn:hover {
+            color: #555;
+            }
+
+            @media (max-width: 1000px){
+                .brand-title{
+                    font-size: 1.5rem;
+                    margin: .5rem;
+                    padding-left: 0px;
+                    color: white;
+                }
+                .toggle-button{
+                    display: flex;
+                }
+                .navbar-links{
+                    display:none;
+                    width: 100%;
+                    border-radius: 10px;
+                }
+                .navbar-links li{
+                    background-color: transparent;
+                                   
+                }
+                .site-menu{
+                    position: absolute;
+                    
+                }
+                .site-navigation{
+                    flex-direction: column;
+                    align-items: flex-start;
+                    display: flex;
+                    
+                }
+
+                .navbar-links ul{
+                    width: 30%;
+                    margin-left: 70%;
+                    flex-direction: column;
+                    background-color: #ffc4ba;
+
+                }
+                .navbar-links ul li{
+                    text-align: right;
+                    padding-right: 15px;
+                    border-radius: 10px;
+
+                }
+                .navbar-links ul li a{
+                    padding: .5rem 1rem;
+                }
+                .navbar-links.active{
+                    display: flex;
+                }
+            }
+
+
+    </style>
+    </head>
+    <body>
+        <div class="col-9 text-right">
+            <span class="d-inline-block d-lg-none">
+                <a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5">
+                    <span class="icon-menu h3 text-white"></span>
+                </a>
+            </span>
+            <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+                <div class="brand-title">HUNNY</div>
+                <a href="#" class="toggle-button">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </a>
+                <div class="navbar-links">
+                    <ul class="site-menu main-menu js-clone-nav ml-auto" style="border-radius: 20px !important;">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/landing">Home</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/landing">HUNNY</a>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/matchingroom">Match Room</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/signup">Sign In</a>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/chat">Chat Room</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About</a>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/profile">Profile</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Contact</a>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/preferences">Preferences</a>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/password_change">Settings</a>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="nav-item right-side">
+                                <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="nav-item right-side">
+                                <a class="nav-link" href="/contact">Contact</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                 </div>
+
+            </nav>
+        </div>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    </body>
+    <footer><div class="col-9 text-right">
+        <span class="d-inline-block d-lg-none">
+            <a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5">
+                <span class="icon-menu h3 text-white"></span>
+            </a>
+        </span>
+        <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+            <div class="navbar-links">
+                <ul class="site-menu main-menu js-clone-nav ml-auto" style="border-radius: 20px !important;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/landing">HUNNY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/kodygentry/Hunny">Git</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://bitbucket.org/cs3398-f21-vulcans/hunny/">Bitbucket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</footer>
+<script>
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+    // Toggle menu when page is smaller
+    const toggleButton = document.getElementsByClassName('toggle-button')[0]
+    const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+    toggleButton.addEventListener('click', () => {
+    navbarLinks.classList.toggle('active')
+    })
+    
+</script>
+</html>

@@ -1,0 +1,85 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Page</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'hunny_app/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'hunny_app/css/style.css' %}">
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: rgb(204, 119, 62);
+        }
+
+        li {
+          float: left;
+          width: 100%;
+        }
+
+        li a {
+          display: block;
+          color: white;
+          width: 100%;
+          height:50;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        li a:hover {
+          background-color: #EDD7BD;
+        }
+</style>
+</head>
+<body style="background-color:#FFDDC3";>
+    <div class="col-9  text-right">
+        <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+            <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+                <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user">HUNNY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/matchingroom">Match Room</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/chat">Chat Room</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/preferences">Preferences</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/settings">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+    </div>
+
+    <div class="main" style="background-color:#FFDDC3";>
+
+        <!-- User Page Details -->
+
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'datingapp/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'datingapp/js/main.js' %}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign In</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'hunny_app/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'hunny_app/css/style.css' %}">
+    <style>
+
+        .container{
+            background-color: white;
+        }
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: transparent;
+        }
+
+        li {
+          float: left;
+        }
+
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        li a:hover {
+          background-color: #EDD7BD;
+        }
+
+        .img{
+            width: 80%;
+            border-radius: 8%;
+        }
+
+    </style>
+</head>
+<body style="background: linear-gradient(44deg, #ff9e2d, #ffcece, #f78131);background-size: 2000% 2000%;";>
+    <!-- need to implement this nav bar into base.html for use -->
+    <div class="col-9  text-right">
+        <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+            <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+                <ul class="site-menu main-menu js-clone-nav ml-auto" style="border-radius: 20px;">
+                  <li class="active"><a href="/landing" class="nav-link">HUNNY</a></li>
+                  <li><a href="/signup" class="nav-link">Sign Up</a></li>
+                  <li><a href="/about" class="nav-link">About</a></li>
+                  <li><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+    </div>
+
+    <div class="main" style="background-color:transparent";>
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="{% static 'hunny_app/images/signin-image.jpg' %}" class="img" alt="sing up image"></figure>
+                        <a href="/signup" class="signup-image-link">Create an account</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Sign in</h2>
+                        {% for message in messages %}
+                                <h3 class="message">{{message}}</h3>
+                        {% endfor %}
+                        <form method="POST" class="register-form" id="login-form" action="">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="your_name" placeholder="Account Name"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="password" id="your_pass" placeholder="Password"/>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'hunny_app/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'hunny_app/js/main.js' %}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

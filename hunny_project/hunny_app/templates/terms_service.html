@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hunny</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'hunny_app/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'hunny_app/css/style.css' %}">
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: rgb(204, 119, 62)
+        }
+
+        li {
+          float: left;
+        }
+
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        li a:hover {
+          background-color: #fceedf;
+        }
+
+        .page{
+            width: 1500px;
+            height: 400px;
+            background: #FFFFFF;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 30px;
+            border-radius: 20px;
+        }
+        .body{
+            background-color:#FFDDC3;
+            border-radius: 20px;
+            padding: 100px;
+        }
+
+    </style>
+</head>
+<body style="background: linear-gradient(44deg, #ff9e2d, #ffcece, #f78131);background-size: 2000% 2000%;">
+    <!-- need to implement this nav bar into base.html for use -->
+    <div class="col-9  text-right";>
+        <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+            <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+            <div class="nav-bar">
+                <ul class="site-menu main-menu js-clone-nav ml-auto" style="border-radius: 20px;">
+                  <li class="active"><a href="/signup" class="nav-link">HUNNY</a></li>
+                  <li><a href="/contact" class="nav-link">CONTACT</a></li>
+
+                </ul>
+            </div>
+            </nav>
+    </div>
+
+    <div class="main" style="background-color: #ffe6cc;">
+        <section class="page">
+            <div class = terms_service>
+                <div class = "media">
+                    <p> TERMS SERVICE </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

@@ -1,0 +1,217 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src='https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap'></script>
+
+    <title>Hunny</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'hunny_app/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'hunny_app/css/style.css' %}">
+    <style>
+        body{
+            display:flexbox;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(44deg, #ff9e2d, #ffcece, #f78131);
+            background-size: 2000% 2000%;
+            border-radius: 20px;
+            padding: 100px; 
+            margin: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body::before{
+            content: '';
+            position: static;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgb(204, 119, 62),#FFDDC3);
+            clip-path: circle(30% at right 60%);
+        }
+        body::after{
+            content: '';
+            position: static;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgb(204, 119, 62),#FFDDC3);
+            clip-path: circle(20% at 10% 30%);
+        }
+        .container{
+            position: relative;
+            color: white;
+            background-color: rgba(241, 147, 85, 0.5);
+            border: 3px solid rgb(255, 255, 255);
+            display: flex;
+            margin-top: 50px;
+            justify-content: center;
+            align-items: center;
+            max-width: 1200px;
+            flex-wrap: wrap;
+            z-index: 1;
+        }
+        .container .card{
+            position:static;
+            width: 280px;
+            height: 400px;
+            margin: 30px;
+            box-shadow: 20 px 20px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            background: rgba(255, 0, 0, 0.1);
+            overflow: hidden;
+            display: block;
+            justify-content: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+        }
+        .container .card .content{
+            padding: 20px;
+            text-align: center;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 0.5s;
+        }
+        .container .card:hover .content {
+            transform: translateY(0px);
+            opacity: 1;
+        }
+        .container .card .content h2{
+            position: absolute;
+            top: -30px;
+            right: 30px;
+            font-size: 8em;
+        
+            color: white;
+            pointer-events: none;
+        }
+        .container .card .content h3{
+            font-size: 1.8em;
+            color: #fff;
+            margin-top: 130px;
+            z-index: 1;
+        }
+        .container .card .content p{
+            font-size: 1em;
+            color: #fff;
+            font-weight: 300;
+        }
+        .container .card .content a{
+            position: relative;
+            display: inline-block;
+            padding: 8px 20px;
+            margin-top: 15px;
+            background: #fff;
+            color: #000;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: transparent
+        }
+
+        li {
+          float: top;
+        }
+
+        li a {
+          display: block;
+          color: white;
+          float: left;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        li a:hover {
+          background-color: #fceedf;
+        }
+        
+        
+        .landing-page{
+            width: 1500px;
+            height: 40px;
+            background: transparent;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 70px;
+            padding: 30px; 
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- need to implement this nav bar into base.html for use -->
+    <div class="col-9  text-right";>
+        <span class="d-inline-block d-lg-none"><a href="#" class="text-primary site-menu-toggle js-menu-toggle py-5"><span class="icon-menu h3 text-white"></span></a></span>
+            <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
+            <div class="nav-bar">
+                <ul class="site-menu main-menu js-clone-nav ml-auto" style="border-radius: 20px;">
+                  <li class="active"><a href="/landing" class="nav-link">HUNNY</a></li>
+                  <li><a href="/signup" class="nav-link">Sign Up</a></li>
+                  <li><a href="/about" class="nav-link">About</a></li>
+                  <li><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+            </nav>
+    </div>
+   
+    <div class="container">
+      <section class="landing-page">
+        <h1>About</h1>
+        <div>The Hunny App was created by a group of young individuals looking to change the outlook of online dating. </div>
+        <div>Checkout the below panels for more information!</div>
+    </section>
+      <div class="card">
+          <div class="content">
+              <h2>01</h2>
+              <h3>Personalize</h3>
+              <p>Create your profile and have fun with this step! The goal is to share and connect without the distraction of appearance.</p>
+          </div>
+      </div>
+      <div class="card">
+          <div class="content">
+              <h2>02</h2>
+              <h3>Match</h3>
+              <p>Find and connect with those who peak your interest in conversation. Whether it's hobbies or taste in fashion, the possibilities are endless!</p>
+          </div>
+      </div>
+      <div class="card">
+          <div class="content">
+              <h2>03</h2>
+              <h3>Reveal</h3>
+              <p>Feel like you know your soulmate? Once you're both ready, you'll be given the choice to reveal your chosen image then the rest history!</p>
+          </div>
+      </div>
+  </div>
+  <script type="text/javascript" src="vanilla-tilt.js"></script>
+  <script>
+      VanillaTilt.init(document.querySelectorAll(".card"), {
+          max: 25, 
+          speed:400,
+          glare: true,
+          "max-glare":1,
+          });
+  </script>
+</body>
+</html>

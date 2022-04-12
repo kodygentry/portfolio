@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'hunny_app/fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'hunny_app/css/style.css' %}">
+    
+</head>
+<body style="background: linear-gradient(44deg, #ff9e2d, #ffcece, #f78131);background-size: 2000% 2000%;">
+    <div class="container">
+      <h1 class="text">Contact Us</h1>
+      <form action="#">
+         <div class="form-row">
+            <div class="input-data">
+               <input type="text" required>
+               <div class="underline"></div>
+               <label for="">First Name</label>
+            </div>
+            <div class="input-data">
+               <input type="text" required>
+               <div class="underline"></div>
+               <label for="">Last Name</label>
+            </div>
+         </div>
+         <div class="form-row">
+            <div class="input-data">
+               <input type="text" required>
+               <div class="underline"></div>
+               <label for="">Email Address</label>
+            </div>
+         </div>
+         <div class="form-row">
+            <div class="input-data">
+              <input type="text" required>
+               <div class="underline"></div>
+               <label for="">How can we improve?</label>
+               <br />
+               <div class="submit-btn">
+                <input type="submit" class="btn btn-primary px-4" value="Submit" style="color: white; width: 50%; margin-right: 25%;">
+               </div>
+            </div>
+         </div>
+      </form>
+   </div>
+</body>
+<style>
+
+  .container{
+    margin-top: 55px;
+    max-width: 50%;
+    background:  rgba(241, 147, 85, 0.5);
+    height: 500px;
+    padding: 25px 40px 10px 40px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    border: 3px solid white;
+  }
+
+.container .text{
+  text-align: center;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.container form{
+  padding: 30px 0 0 0;
+}
+.container form .form-row{
+  display: flex;
+  margin: 32px 0;
+}
+form .form-row .input-data{
+  width: 100%;
+  height: 40px;
+  margin: 0 20px;
+  position: relative;
+}
+form .form-row {
+  height: 70px;
+}
+.input-data input{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 17px;
+  border: 2px solid rgba(204, 119, 62, 0.699);
+  border-radius: 12px;
+  margin-left: -10px;
+  color: rgba(241, 147, 85, 0.5);
+}
+.input-data input:focus ~ label, 
+.input-data input:valid ~ label{
+  transform: translateY(-20px);
+  font-size: 14px;
+  color: white;
+  margin-top: 40px;
+}
+
+.input-data label{
+  position: absolute;
+  pointer-events: none;
+  bottom: 0px;
+  font-size: 20px;
+  padding-bottom: 35px;
+  transition: all 0.3s ease;
+  color: rgba(241, 147, 85, 0.5);
+}
+
+.input-data .underline{
+  position: absolute;
+  border-bottom-right-radius: 0;
+  height: 2px;
+  width: 95%;
+}
+.input-data .underline:before{
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 100%;
+  background: white;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.input-data input:focus ~ .underline:before,
+.input-data input:valid ~ .underline:before{
+  transform: scale(1);
+}
+
+.btn{
+  width: 200%;
+	float: right;
+  color: white;
+	background-color: rgb(204, 119, 62);
+}
+.btn:hover{
+  background: rgb(255, 214, 186);
+  cursor: default;
+  border: white;
+  color: white;
+}
+
+@media (max-width: 700px) {
+  .container .text{
+    font-size: 30px;
+  }
+  .container form{
+    padding: 10px 0 0 0;
+  }
+  .container form .form-row{
+    display: block;
+  }
+  form .form-row {
+    margin: 35px ;
+  }
+  .btn {
+    width: 40%;
+  }
+}
+</style>
+</html>
+{% endblock content %}

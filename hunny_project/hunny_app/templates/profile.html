@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="utf-8"/>
+    <title>Your Profile</title>
+</head>
+<br>
+<body style="background: linear-gradient(44deg, #ff9e2d, #ffcece, #f78131);background-size: 2000% 2000%;">
+<div class="page-content page-container" id="page-content">
+        <div class="row container d-flex justify-content-center">
+                <div class="card user-card-full" style="border-radius: 12px;">
+                        <div style="float: center;" class="col-sm-4 bg-c-lite-green user-profile">
+                            <div class="card-block text-center text-white">
+                                <h4 class="font-weight-bold">
+                                    @{{ user.userprofile.user }}
+                                  </h4>
+                                <div class="media">
+                                    <img src="{{ user.userprofile.image0.url }}" class="rounded-circle" width="90">
+                                </div>
+                                <h6 class="f-w-600" style="font-size: 40px;">{{ user.userprofile.first_name }} {{ user.userprofile.last_name }}</h6>
+                                <button class="edit-btn" onclick="location.href='/profile-edit'">
+                                    <p style="color: white; font-weight: 400;">edit profile</p>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card-block info" style="padding-right: 20px; padding-left: 20px; padding-top: 0px; padding-bottom: 30px;">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">About Me</h6>
+                                <div class="row">
+                                    <div class="col-sm-6 location">
+                                        <p class="m-b-10 f-w-600">Current City</p>
+                                        <h6>{{ user.userprofile.city }}</h6>
+                                    </div>
+                                    <div class="col-sm-6 age">
+                                        <p class="m-b-10 f-w-600">Age</p>
+                                        <h6>{{ user.userprofile.age }}</h6>
+                                    </div>
+                                </div>
+                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Bio</h6>
+                                <div class="row">
+                                    <div class="col-sm-10 bio">
+                                        <p style="color: white; margin-top: 20px; font-size: large">{{ user.userprofile.bio }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            
+        </div>
+</div>
+<style>
+
+.page-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin:auto;
+}
+
+.card{
+    border: 3px solid #fff;
+    padding: 100px;
+    display: inline-block;
+    max-width: 80%;    
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    background-color: rgba(241, 147, 85, 0.5);
+    text-align: center;
+    color: white;
+}
+
+.card h4{
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.page-content .user-profile{
+  
+  background-color: transparent;
+}
+
+.page-content .user-profile img{
+  height: 200px;
+  width: 200px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.page-content .user-profile h6{
+  margin-bottom: 10px;
+}
+
+.page-content .user-profile p{
+  font-size: 12px;
+  text-align: center;
+}
+.col-sm-8{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: inline-block;
+  justify-content: space-between;
+  padding-top: 50px;
+  padding-left: 35px;
+  
+}
+
+.col-xl-6{
+  background-color: transparent;
+  box-shadow: none;
+  box-sizing: 300px;
+}
+.d-flex{
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.m-l-0{
+  width: auto;
+}
+
+.card-block h6{
+  margin-bottom: 15px;
+  padding: 15px;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 28px;
+}
+.f-w-600{
+	color: white;
+	text-transform: capitalize;
+  margin: 0px;
+}
+.f-w-400{
+  margin: 0px;
+  border: white;
+  font-weight: lighter;
+}
+.location{
+  padding: 0px 80px;
+  text-align: center;
+}
+.age{
+  padding: 0px 10px;
+  text-align: center;
+}
+.col-sm-6 h6{
+  color: white;
+  padding-top: 20px;
+  padding-left: -10px;
+  margin: 0px;
+  
+}
+.edit-btn{
+  padding-top: 0px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: rgba(204, 119, 62, 0.6);
+  color: rgb(255, 255, 255);
+  outline: none;
+  border: 0px;
+  box-shadow: none;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+.edit-btn:hover{
+  background: rgb(255, 214, 186);
+  cursor: default;
+}
+@media(max-width: 700px){
+  
+  .card{
+    margin: 0px;
+    padding: 10px;
+    max-width: 90%;    
+    text-align: center;
+  }
+  .card .card-block{
+    padding: 0px;
+    align-items: center;
+    text-align: center;
+    font-size: 10px;
+  }
+
+}
+</style>
+</body>
+{% endblock content %}

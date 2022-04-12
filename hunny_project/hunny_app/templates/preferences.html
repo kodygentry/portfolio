@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="utf-8"/>
+    <title>Preferences</title>
+</head>
+<br>
+<body style="background: linear-gradient(44deg, #ff9e2d, #ffcece, #f78131);
+background-size: 2000% 2000%;">
+    <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Current Preferences</h3>
+                            <div class="field">Gender Preference:</div>
+                            <div class="col-md-12">
+                                {{ user.userprofile.gender_preference }}
+                            </div>
+                            <div class="field">Looking for:</div>
+                            <div class="col-md-12">
+                                {{ user.userprofile.relationship_preference }}
+                            </div>
+                            <div class="field right">Age Range:</div>
+                            <div class="col-md-12 right">
+                                {{ user.userprofile.age_range }}
+                            </div>
+                            <div class="field right">Distance (in miles):</div>
+                            <div class="col-md-12 right">
+                                {{ user.userprofile.match_radius }}
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-9">
+                                    <input class="btn-primary" onclick="location.href='/edit-preferences'" value="Edit Preferences"></input>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    .form-holder {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .form-holder .form-content {
+        position: relative;
+        text-align: center;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .form-content .form-items {
+        border: 3px solid #fff;
+        padding: 40px 200px;
+        display: inline-block;
+        max-width: 100%;    
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        text-align: left;
+        -webkit-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        background-color: rgba(241, 147, 85, 0.5);
+    }
+    .form-content h3 {
+        color: #fff;
+        text-align: left;
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    .form-content h3 {
+        margin-bottom: 30px;
+    }
+    .form-content p {
+        color: #fff;
+        text-align: left;
+        font-size: 17px;
+        font-weight: 300;
+        line-height: 20px;
+        margin-bottom: 30px;
+    }
+    .form-content label {
+        color: #fff;
+    }
+    .form-content input[type=text], .form-content select {
+        width: 100%;
+        padding: 9px 20px;
+        text-align: left;
+        border-radius: 6px;
+        background-color: #fff;
+        font-size: 15px;
+        font-weight: 300;
+        color: #8D8D8D;
+        -webkit-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+    .btn-primary{
+        background: rgba(204, 119, 62, 0.6);
+        color: rgb(255, 251, 249);
+        outline: none;
+        border: 0px;
+        box-shadow: none;
+        border-radius: 8px;
+        font-size: 14px;
+        padding-top: 8px;
+        text-align: center;
+    }
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+        background: rgb(255, 214, 186);
+        cursor: default;
+    }
+    .form-content textarea {
+        position: static !important;
+        width: 100%;
+        text-align: left;
+        background-color: #fff;
+        font-size: 15px;
+        font-weight: 300;
+        color: #8D8D8D;
+    }
+    .form-content textarea:hover, .form-content textarea:focus {
+        border: 0;
+        background-color: #ebeff8;
+        color: #8D8D8D;
+    }
+    .field {
+        color: whitesmoke;
+        padding-top: 10px;
+    }
+    .col-md-12 {
+        color: whitesmoke;
+        font-size: 20px;
+    }
+    @media(max-width: 600px){
+        .form-holder .form-content {
+            padding: 10px;
+            width: 100%;
+        }
+        .form-content .form-items {
+            padding: 20px;
+        }
+    }
+</style>
+{% endblock content %}
